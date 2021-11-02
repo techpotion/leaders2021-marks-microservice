@@ -2,28 +2,27 @@ import grpc
 from concurrent import futures
 import gen.pb.microservice_pb2 as pb2
 import gen.pb.microservice_pb2_grpc as pb2_grpc
-
+from src.svm import SVM
 
 class Microservice(pb2_grpc.MicroserviceServicer):
     def __init__(self, *args, **kwargs):
-        pass
+        self.__svm = SVM()
 
     def GetMark(self, request, context):
-        print(request)
+        self.__svm.get_mark(request)
         result = {
-            'mark': 6.8
+            'mark': self.__svm.get_mark(request)
         }
         return pb2.Marks.GetResponse(**result)
 
-
 def serve():
-    print('Starting microservice on :3300')
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     pb2_grpc.add_MicroserviceServicer_to_server(Microservice(), server)
     server.add_insecure_port('[::]:3300')
+    print('Started microservice on :3300')
     server.start()
     server.wait_for_termination()
 
-
 if __name__ == '__main__':
     serve()
+
