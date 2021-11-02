@@ -1,6 +1,5 @@
 import grpc
 from concurrent import futures
-import time
 import gen.pb.microservice_pb2 as pb2
 import gen.pb.microservice_pb2_grpc as pb2_grpc
 
@@ -14,7 +13,7 @@ class Microservice(pb2_grpc.MicroserviceServicer):
         result = {
             'mark': 6.8
         }
-        return pb2._MARKS_GETRESPONSE(**result)
+        return pb2.Marks.GetResponse(**result)
 
 
 def serve():
