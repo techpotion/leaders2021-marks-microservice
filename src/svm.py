@@ -11,7 +11,8 @@ class SVM:
         print('Pickles were loaded')
 
     def __ceil_prob(self, prob) -> float:
-        return ceil(prob * 100 * 10) / 10
+        num = prob * 10
+        return ceil(num * 10) / 10.0
 
     def __get_probabilty(self, values: np.array) -> float:
         des = self.__model.decision_function([values])
@@ -22,12 +23,14 @@ class SVM:
 
     def get_mark(self, req: pb.Marks.GetRequest) -> float:
         values = np.array([
-            req.sportsObjectsAmountPer100k,
             req.areasAmountPer100k,
             req.sportsAmountPer100k,
+            req.areasSquarePer100k,
             req.subwayDistance,
             req.pollutionPercentage
         ])
+        print(values)
         values = self.__standartize_row(values)
+        print(values)
         prob = self.__get_probabilty(values)
         return self.__ceil_prob(prob)
