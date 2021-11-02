@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import microservice_pb2 as microservice__pb2
+import gen.pb.microservice_pb2 as microservice__pb2
 
 
 class MicroserviceStub(object):
@@ -15,7 +15,7 @@ class MicroserviceStub(object):
             channel: A grpc.Channel.
         """
         self.GetMark = channel.unary_unary(
-                '/Microservice/GetMark',
+                '/pb.Microservice/GetMark',
                 request_serializer=microservice__pb2.Marks.GetRequest.SerializeToString,
                 response_deserializer=microservice__pb2.Marks.GetResponse.FromString,
                 )
@@ -40,7 +40,7 @@ def add_MicroserviceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'Microservice', rpc_method_handlers)
+            'pb.Microservice', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -59,7 +59,7 @@ class Microservice(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/Microservice/GetMark',
+        return grpc.experimental.unary_unary(request, target, '/pb.Microservice/GetMark',
             microservice__pb2.Marks.GetRequest.SerializeToString,
             microservice__pb2.Marks.GetResponse.FromString,
             options, channel_credentials,
