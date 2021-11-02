@@ -8,7 +8,7 @@ service Microservice {
 
 message Marks {
     message GetRequest {
-        double areasSquarePer100k = 1;
+        double sportsObjectsAmountPer100k = 1;
         double areasAmountPer100k = 2;
         double sportsAmountPer100k = 3;
         double subwayDistance = 4;

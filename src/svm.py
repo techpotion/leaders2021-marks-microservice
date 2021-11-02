@@ -22,7 +22,7 @@ class SVM:
 
     def get_mark(self, req: pb.Marks.GetRequest) -> float:
         values = np.array([
-            req.areasSquarePer100k,
+            req.sportsObjectsAmountPer100k,
             req.areasAmountPer100k,
             req.sportsAmountPer100k,
             req.subwayDistance,
