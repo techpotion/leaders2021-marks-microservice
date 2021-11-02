@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+service Microservice {
+    rpc GetMark(Marks.GetRequest) returns (Marks.GetResponse) {}
+}
+
+message Marks {
+    message GetRequest {
+        double areasSquarePer100k = 1;
+        double areasAmountPer100k = 2;
+        double sportsAmountPer100k = 3;
+        double subwayDistance = 4;
+        double pollutionPercentage = 5;
+    }
+
+    message GetResponse {
+        double mark = 1;
+    }
+}
