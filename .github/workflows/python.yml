@@ -7,11 +7,6 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    name: Build
-    steps:
-      run: echo "empty job"
-
   dockerize:
     name: Dockerize
     if: github.ref == 'refs/heads/master'
