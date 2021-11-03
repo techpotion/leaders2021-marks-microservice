@@ -1,13 +1,10 @@
-FROM python:3.10.0-slim as base
-FROM base as builder
-RUN mkdir /install
-WORKDIR /install
-COPY requirements.txt /requirements.txt
-RUN python -m pip install --upgrade pip
-RUN pip install --prefix=/install -r /requirements.txt
+FROM python:3.9-slim-buster
 
-FROM base
-COPY --from=builder /install /usr/local
-COPY . /app
 WORKDIR /app
+
+COPY production_requirements.txt /app/requirements.txt
+RUN pip install -r requirements.txt
+
+COPY . /app/
+
 CMD ["python3", "main.py"]

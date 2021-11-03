@@ -1,0 +1,10 @@
+grpcio==1.41.1
+joblib==1.1.0
+numpy==1.21.3
+protobuf==3.19.1
+scikit-learn==1.0.1
+scipy==1.7.1
+six==1.16.0
+sklearn==0.0
+soupsieve==2.3
+threadpoolctl==3.0.0
