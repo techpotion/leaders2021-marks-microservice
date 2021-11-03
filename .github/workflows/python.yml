@@ -7,15 +7,9 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    name: Build
-    steps:
-      run: echo "empty job"
-
   dockerize:
     name: Dockerize
     if: github.ref == 'refs/heads/master'
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
