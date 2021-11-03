@@ -9,7 +9,7 @@ on:
 jobs:
   dockerize:
     name: Dockerize
-    if: github.ref == 'refs/heads/master'
+    # if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -28,14 +28,15 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@master
-        with:
-          context: .
-          push: true
-          tags: ${{ secrets.REGISTRY_URL }}/${{ secrets.REGISTRY_USERNAME }}/${{ secrets.REGISTRY_REPOSITORY_NAME }}
-          secrets: |
-            GIT_AUTH_TOKEN=${{ secrets.PAT }}
+        # id: docker_build
+        # uses: docker/build-push-action@master
+        # with:
+        #   context: .
+        #   push: true
+        #   tags: ${{ secrets.REGISTRY_URL }}/${{ secrets.REGISTRY_USERNAME }}/${{ secrets.REGISTRY_REPOSITORY_NAME }}
+        #   secrets: |
+        #     GIT_AUTH_TOKEN=${{ secrets.PAT }}
+        run: docker build -t ${{ secrets.REGISTRY_URL }}/${{ secrets.REGISTRY_USERNAME }}/${{ secrets.REGISTRY_REPOSITORY_NAME }} . && docker push ${{ secrets.REGISTRY_URL }}/${{ secrets.REGISTRY_USERNAME }}/${{ secrets.REGISTRY_REPOSITORY_NAME }}
   redeploy:
     name: Redeploy
     if: github.ref == 'refs/heads/master'
