@@ -4,7 +4,7 @@
 # Sport Object Analysis
 
 ## Depolyment
-1. Clone repository and "cd" in it
+1. Clone repository and "cd" into it
 ```bash
 $ git clone https://github.com/techpotion/leaders2021-data-science.git
 $ cd leaders2021-data-science
@@ -14,7 +14,7 @@ $ cd leaders2021-data-science
 ```bash
 $ python3 -m venv env
 $ source env/bin/activate
-$ pip install -r requirements.txt
+$ pip install -r production_requirements.txt
 ```
 
 3 Run the project
@@ -23,7 +23,7 @@ $ python main.py
 ```
 
 ## Depolyment using Docker
-1. Clone repository and "cd" in it
+1. Clone repository and "cd" into it
 ```bash
 $ git clone https://github.com/techpotion/leaders2021-data-science.git
 $ cd leaders2021-data-science
