@@ -9,6 +9,7 @@ class Microservice(pb2_grpc.MicroserviceServicer):
         self.__svm = SVM()
 
     def GetMark(self, request, context):
+        print(request)
         self.__svm.get_mark(request)
         result = {
             'mark': self.__svm.get_mark(request)
