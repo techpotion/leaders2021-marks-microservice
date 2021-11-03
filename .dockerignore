@@ -1,0 +1,6 @@
+env/
+notebooks/
+proto/
+.github/
+Makefile
+assets/
