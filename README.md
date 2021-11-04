@@ -6,8 +6,8 @@
 ## Depolyment
 1. Clone repository and "cd" into it
 ```bash
-$ git clone https://github.com/techpotion/leaders2021-data-science.git
-$ cd leaders2021-data-science
+$ git clone https://github.com/techpotion/leaders2021-marks-microservice.git
+$ cd leaders2021-marks-microservice
 ```
 
 2. Make virtual environment (optional) and install project's dependencies
@@ -25,16 +25,16 @@ $ python main.py
 ## Depolyment using Docker
 1. Clone repository and "cd" into it
 ```bash
-$ git clone https://github.com/techpotion/leaders2021-data-science.git
-$ cd leaders2021-data-science
+$ git clone https://github.com/techpotion/leaders2021-marks-microservice.git
+$ cd leaders2021-marks-microservice
 ```
 
 2. Build the docker image
 ```bash
-$ docker build --tag microservice .
+$ docker build --tag leaders2021-marks-microservice .
 ```
 
 3. Run the project
 ```bash
-$ docker run -d -p 3300:3300 --name techpotion-leaders2021-microservice microservice
+$ docker run -d -p 3300:3300 --name leaders2021-marks-microservice leaders2021-marks-microservice
 ```
